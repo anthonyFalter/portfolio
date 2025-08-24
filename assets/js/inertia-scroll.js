@@ -38,6 +38,9 @@ class InertiaScroll {
         // Handle resize
         window.addEventListener('resize', this.onResize.bind(this));
         
+        // Handle scroll events (for scrollbar dragging)
+        window.addEventListener('scroll', this.onScroll.bind(this), { passive: true });
+        
         // Initialize scroll position
         this.scrollY = window.pageYOffset;
         this.targetScrollY = this.scrollY;
@@ -91,6 +94,18 @@ class InertiaScroll {
         setTimeout(() => {
             this.isScrolling = false;
         }, 100);
+    }
+    
+    onScroll(e) {
+        // Sync with native scrollbar dragging
+        const currentScroll = window.pageYOffset;
+        
+        // If the scroll position changed significantly without our animation
+        // (indicating scrollbar dragging), update our targets
+        if (Math.abs(currentScroll - this.scrollY) > 5) {
+            this.scrollY = currentScroll;
+            this.targetScrollY = currentScroll;
+        }
     }
     
     onResize() {
