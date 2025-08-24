@@ -2127,14 +2127,20 @@ textarea.w-input, textarea.w-select {
   letter-spacing: .25px;
   margin-left: 5px;
   margin-right: 5px;
-  padding: 5px 10px;
-  font-size: 14px;
-  line-height: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
   text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
 }
 
 .nav-link:hover {
-  color: #1a1b1fbf;
+  color: #00ffc4;
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(0, 255, 196, 0.3);
 }
 
 .nav-link:focus-visible, .nav-link[data-wf-focus-visible] {
@@ -2463,28 +2469,52 @@ textarea.w-input, textarea.w-select {
   -webkit-backdrop-filter: blur(50px);
   backdrop-filter: blur(50px);
   color: #ffffff8a;
-  text-align: center;
-  background-color: #ffeded03;
-  border: 1px solid #ffffff69;
-  border-radius: 20vh;
+  border: 1px solid #ffffff8a;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.05);
+  width: 200px;
+  height: 40px;
+  padding: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  text-decoration: none;
+  display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 35px;
-  font-family: Montserrat, sans-serif;
-  font-size: clamp(8px, .9vw, 15px);
-  font-weight: 500;
-  line-height: 1px;
-  display: flex;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+  box-sizing: border-box;
+}
+
+.cta-btn-primary-1:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .cta-btn-primary-1.cta-btn-primary-2 {
-  color: #00ffc4;
-  border-color: #00ffc4;
-  border-radius: 20vh;
-  width: 200px;
-  height: 35px;
-  font-size: clamp(8px, .9vw, 15px);
+  color: #00ffc4 !important;
+  border-color: #00ffc4 !important;
+  border-radius: 25px !important;
+  width: 200px !important;
+  height: 40px !important;
+  font-size: 12px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  border: 1px solid #00ffc4 !important;
+  background-color: rgba(0, 255, 196, 0.05) !important;
+}
+
+.cta-btn-primary-1.cta-btn-primary-2:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 196, 0.4);
+  border-color: rgba(0, 255, 196, 0.9);
+  color: rgba(0, 255, 196, 1);
+  background-color: rgba(0, 255, 196, 0.1);
 }
 
 .cta-btn-primary-1.cta-btn-primary-corner-rad {
@@ -2495,22 +2525,43 @@ textarea.w-input, textarea.w-select {
   padding-right: 0;
 }
 
+.cta-btn-primary-1.cta-btn-primary-corner-rad:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
 .cta-btn-primary-1.cdn-resume-button {
   color: #00ffc4;
   border-color: #00ffc4;
   border-radius: 20vh;
+  background-color: rgba(0, 255, 196, 0.05);
   width: 200px;
   height: 35px;
   font-size: clamp(8px, .8vw, 13px);
 }
 
+.cta-btn-primary-1.cdn-resume-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 255, 196, 0.4);
+  border-color: #00ffc4;
+  color: #00ffc4;
+  background-color: rgba(0, 255, 196, 0.1);
+}
+
 .cta-btn-primary-1.view-projects-button-copy {
-  color: #ffffff8a;
-  border-color: #ffffff8a;
-  border-radius: 20vh;
-  width: 200px;
-  height: 35px;
-  font-size: clamp(8px, .8vw, 13px);
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+  border-radius: 25px !important;
+  width: 150px !important;
+  height: 40px !important;
+  font-size: 12px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  border: 1px solid #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .cta-btn-primary-1.project-type2-tag {
@@ -2539,6 +2590,7 @@ textarea.w-input, textarea.w-select {
   display: block;
   position: absolute;
   transform: rotate(0);
+  pointer-events: none;
 }
 
 .background-section-container {
@@ -4600,6 +4652,16 @@ textarea.w-input, textarea.w-select {
   font-weight: 500;
   line-height: 1px;
   display: flex;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+}
+
+.form-submit-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 196, 0.4);
+  border-color: rgba(0, 255, 196, 0.9);
+  color: rgba(0, 255, 196, 1);
+  background-color: rgba(0, 255, 196, 0.1);
 }
 
 .form-submit-btn.cta-btn-primary-2 {
@@ -4752,6 +4814,15 @@ textarea.w-input, textarea.w-select {
   font-family: Montserrat, sans-serif;
   font-size: clamp(8px, .8vw, 13px);
   display: flex;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+}
+
+.category-btn:hover {
+  color: #00ffc4;
+  transform: scale(1.02);
+  background-color: rgba(0, 255, 196, 0.05);
+  text-shadow: 0 0 8px rgba(0, 255, 196, 0.3);
 }
 
 .btn-placeholder-img {
@@ -4760,6 +4831,17 @@ textarea.w-input, textarea.w-select {
   margin-left: 30px;
   display: block;
   position: absolute;
+  pointer-events: none;
+}
+
+.btn-placeholder-image {
+  z-index: 1;
+  opacity: .75;
+  width: 15px;
+  margin-left: 30px;
+  display: block;
+  position: absolute;
+  pointer-events: none;
 }
 
 .category-second-button-div {
@@ -4795,6 +4877,15 @@ textarea.w-input, textarea.w-select {
   font-family: Montserrat, sans-serif;
   font-size: clamp(8px, .8vw, 13px);
   display: flex;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+}
+
+.category-2-btn:hover {
+  color: #00ffc4;
+  transform: scale(1.02);
+  background-color: rgba(0, 255, 196, 0.05);
+  text-shadow: 0 0 8px rgba(0, 255, 196, 0.3);
 }
 
 .category-3-btn {
@@ -4809,6 +4900,15 @@ textarea.w-input, textarea.w-select {
   font-family: Montserrat, sans-serif;
   font-size: clamp(8px, .8vw, 13px);
   display: flex;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: scale(1);
+}
+
+.category-3-btn:hover {
+  color: #00ffc4;
+  transform: scale(1.02);
+  background-color: rgba(0, 255, 196, 0.05);
+  text-shadow: 0 0 8px rgba(0, 255, 196, 0.3);
 }
 
 @media screen and (max-width: 991px) {
