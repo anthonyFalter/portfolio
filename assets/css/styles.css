@@ -2533,13 +2533,17 @@ textarea.w-input, textarea.w-select {
 }
 
 .cta-btn-primary-1.cdn-resume-button {
-  color: #00ffc4;
-  border-color: #00ffc4;
-  border-radius: 20vh;
-  background-color: rgba(0, 255, 196, 0.05);
-  width: 200px;
-  height: 35px;
-  font-size: clamp(8px, .8vw, 13px);
+  color: #00ffc4 !important;
+  border-color: #00ffc4 !important;
+  border-radius: 25px !important;
+  background-color: rgba(0, 255, 196, 0.05) !important;
+  width: 200px !important;
+  height: 40px !important;
+  font-size: 12px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+  border: 1px solid #00ffc4 !important;
 }
 
 .cta-btn-primary-1.cdn-resume-button:hover {
@@ -2554,7 +2558,7 @@ textarea.w-input, textarea.w-select {
   color: #ffffff !important;
   border-color: #ffffff !important;
   border-radius: 25px !important;
-  width: 150px !important;
+  width: 200px !important;
   height: 40px !important;
   font-size: 12px !important;
   padding: 0 !important;
