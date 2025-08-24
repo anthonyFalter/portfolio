@@ -4120,7 +4120,7 @@ textarea.w-input, textarea.w-select {
   color: #00ffc4;
   border-color: #00ffc4;
   border-radius: 20vh;
-  width: 11vw;
+  width: 200px;
   height: 4vh;
   font-size: .8vw;
 }
