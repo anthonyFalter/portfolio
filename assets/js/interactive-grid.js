@@ -130,8 +130,8 @@ class InteractiveGrid {
     // Clear screen with transparency
     this.ctx.clearRect(0, 0, this.width, this.height);
 
-    // Line style - subtle white with low opacity
-    this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+    // Line style - subtle blue with low opacity
+    this.ctx.strokeStyle = 'rgba(173, 216, 230, 0.03)'; // Light blue
     this.ctx.lineWidth = 1;
 
     const cols = Math.ceil(this.width / this.cellSize) + 1;
