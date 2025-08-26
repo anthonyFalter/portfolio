@@ -3839,7 +3839,7 @@ textarea.w-input, textarea.w-select {
   border-right: 1px solid #333;
   justify-content: center;
   align-items: center;
-  width: 500px;
+  width: 250px;
   max-width: none;
   margin-left: 0;
   margin-right: 0;
@@ -4007,36 +4007,39 @@ textarea.w-input, textarea.w-select {
 }
 
 .work-highlights-list-container {
-  height: 105px;
+  height: 26px;
+  padding: 0;
+  margin: 0 0 0 40px; /* Reduced left margin to 40px */
 }
 
 .list {
-  height: 100%;
-  padding-left: 60px;
+  padding: 0 0 0 1.5em;
+  margin: 0 0 1em 0; /* Reduced top margin */
   list-style-type: disc;
+  list-style-position: outside;
 }
 
 .list-item {
-  color: #ffefef;
-  list-style-type: disc;
+  color: #fff;
+  margin: 0 0 12px 0;
+  padding: 0 0 0 0.5em;
+  line-height: 1.6;
+  position: relative;
+  display: list-item;
 }
 
 .key-highlights-list_item {
   color: #fff;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-left: 0;
-  padding-right: 250px;
+  margin: 0;
+  padding: 0;
   font-family: Montserrat, sans-serif;
-  font-size: clamp(10px, .9vw, 15px);
+  font-size: 15px; /* Fixed font size instead of viewport-based */
+  line-height: 1.6;
+  text-align: left;
   font-weight: 400;
-  line-height: 20px;
-  display: flex;
+  display: block;
+  width: 100%;
+  padding-left: 0; /* Remove any left padding */
 }
 
 .work-tool-container {
@@ -4269,8 +4272,15 @@ textarea.w-input, textarea.w-select {
 }
 
 .other-project-header-container {
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   height: 40px;
+  margin: 0;
+  padding: 0 10px;
   display: flex;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .other-project-img-container {
@@ -4288,24 +4298,28 @@ textarea.w-input, textarea.w-select {
 
 .project-header-text-container, .project-type-tag-container {
   width: 50%;
-  height: 100%;
-  margin-left: 0;
-  margin-right: 0;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .other-project-title {
   color: #fff;
-  justify-content: flex-start;
-  align-items: center;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   width: 100%;
-  height: 100%;
-  margin-top: 0;
-  margin-bottom: 0;
   padding-left: 10px;
   font-family: Montserrat, sans-serif;
-  font-size: clamp(10px, 1.2vw, 15px);
-  font-weight: 700;
-  display: flex;
+  font-size: clamp(12px, 1.2vw, 15px);
+  font-weight: 600;
+  display: block;
+  text-align: left;
 }
 
 .other-project-type-container {
@@ -4822,13 +4836,38 @@ textarea.w-input, textarea.w-select {
   display: flex;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   transform: scale(1);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.category-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  border-radius: inherit;
+  z-index: -1;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .category-btn:hover {
   color: #00ffc4;
-  transform: scale(1.02);
   background-color: rgba(0, 255, 196, 0.05);
-  text-shadow: 0 0 8px rgba(0, 255, 196, 0.3);
+}
+
+.category-btn.active {
+  color: #00ffc4;
+  background-color: rgba(0, 255, 196, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 196, 0.3);
+}
+
+/* Remove the ::before pseudo-element styles since we're not using them anymore */
+.category-btn::before {
+  display: none;
 }
 
 .btn-placeholder-img {
@@ -4871,11 +4910,12 @@ textarea.w-input, textarea.w-select {
   display: flex;
 }
 
-.category-2-btn {
+.category-2-btn, .category-3-btn {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
   color: #a7a7a7;
   background-color: #ffffff03;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -4887,34 +4927,25 @@ textarea.w-input, textarea.w-select {
   transform: scale(1);
 }
 
-.category-2-btn:hover {
-  color: #00ffc4;
-  transform: scale(1.02);
-  background-color: rgba(0, 255, 196, 0.05);
-  text-shadow: 0 0 8px rgba(0, 255, 196, 0.3);
+.category-2-btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .category-3-btn {
-  color: #a7a7a7;
-  background-color: #ffffff03;
   border-left: 1px solid #333;
   border-radius: 0 200px 200px 0;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  font-family: Montserrat, sans-serif;
-  font-size: clamp(8px, .8vw, 13px);
-  display: flex;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: scale(1);
 }
 
-.category-3-btn:hover {
+.category-2-btn:hover, .category-3-btn:hover {
   color: #00ffc4;
-  transform: scale(1.02);
   background-color: rgba(0, 255, 196, 0.05);
-  text-shadow: 0 0 8px rgba(0, 255, 196, 0.3);
+}
+
+.category-2-btn.active, .category-3-btn.active {
+  color: #00ffc4;
+  background-color: rgba(0, 255, 196, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 196, 0.3);
 }
 
 @media screen and (max-width: 991px) {
@@ -5528,4 +5559,131 @@ textarea.w-input, textarea.w-select {
   .form-submit-btn.cdn-resume-button, .form-submit-btn.view-projects-button-copy, .form-submit-btn.project-type2-tag {
     font-size: .4em;
   }
+}
+
+/* Project Category Buttons - Original Styles */
+.category-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0;
+  flex-wrap: wrap;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 767px) {
+  .category-buttons {
+    gap: 10px;
+  }
+  
+  .category-btn {
+    padding: 8px 18px;
+    font-size: 12px;
+  }
+}
+
+/* Project Navigation */
+.w-layout-blockcontainer.content-main.w-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: auto;
+    padding: 20px 0;
+}
+
+.project-navigation {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+}
+
+.nav-arrow {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: rgba(255, 255, 255, 0.7);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    opacity: 0.7;
+}
+
+.nav-arrow:hover {
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.nav-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.nav-arrow svg {
+    width: 16px;
+    height: 16px;
+}
+
+.prev-arrow {
+    left: 10px;
+}
+
+.next-arrow {
+    right: 10px;
+}
+
+.content-image {
+    width: auto;
+    max-width: 75%;
+    height: auto;
+    max-height: 70vh;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Project transition animations */
+.content-main {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.content-main.fade-out {
+  opacity: 0;
+}
+
+.project-info,
+#heading_projects-title,
+#paragraph_projects-description,
+.project-type-container {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.project-info.hide,
+#heading_projects-title.hide,
+#paragraph_projects-description.hide,
+.project-type-container.hide {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.work-highlights-list-container {
+  transition: opacity 0.3s ease-in-out, height 0.3s ease-in-out;
+}
+
+.work-highlights-list-container.hide {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
 }

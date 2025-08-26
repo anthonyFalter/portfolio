@@ -14,6 +14,7 @@
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
     <script src="assets/js/script1.js" type="text/javascript"></script>
     <script src="assets/js/card-stack.js" type="text/javascript"></script>
+    <script src="assets/js/project-filter.js" type="text/javascript"></script>
     <script
         type="text/javascript">WebFont.load({ google: { families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic", "JetBrains Mono:100,200,300,regular,500,600,700,800", "Poppins:100,300,regular,500,600,700,800,900", "Inter:100,300,regular,500,600,700,800,900,italic,600italic"] } });</script>
     <script
@@ -228,12 +229,25 @@
                         </div>
                     </div>
                     <div class="w-layout-blockcontainer project-viewer-details w-container">
-                        <div class="w-layout-blockcontainer content-main w-container"><img
-                                src="https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png"
-                                loading="lazy" sizes="(max-width: 595px) 100vw, 595px"
-                                srcset="https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert-p-500.png 500w, https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png 595w"
-                                alt="A digital poster showcasing BINI's recent concert" id="image_img-billboard"
-                                class="content-image"></div>
+                        <div class="w-layout-blockcontainer content-main w-container">
+                            <div class="project-navigation">
+                                <button id="prev-project" class="nav-arrow prev-arrow" aria-label="Previous project">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <img src="https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png"
+                                    loading="lazy" sizes="(max-width: 595px) 100vw, 595px"
+                                    srcset="https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert-p-500.png 500w, https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png 595w"
+                                    alt="A digital poster showcasing BINI's recent concert" id="image_img-billboard"
+                                    class="content-image">
+                                <button id="next-project" class="nav-arrow next-arrow" aria-label="Next project">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
                         <div class="w-layout-blockcontainer details-main w-container">
                             <div class="w-layout-blockcontainer content-information-container w-container">
                                 <div class="w-layout-blockcontainer work-tags-container w-container">
@@ -270,11 +284,11 @@
                                 <div class="w-layout-blockcontainer work-highlights-list-container w-container">
                                     <ul role="list" class="list">
                                         <li class="list-item">
-                                            <h1 class="key-highlights-list_item">Bold typography, neon highlights</h1>
+                                            <span class="key-highlights-list_item">Bold typography, neon highlights</span>
                                         </li>
                                         <li class="list-item">
-                                            <h1 class="key-highlights-list_item">Created a design adaptable for both
-                                                digital screens and promotional campaigns.</h1>
+                                            <span class="key-highlights-list_item">Created a design adaptable for both
+                                                digital screens and promotional campaigns.</span>
                                         </li>
                                     </ul>
                                 </div>
