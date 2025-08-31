@@ -18,6 +18,8 @@ project-root/
 │       └── content/       # Content images
 └── index.html             # Main HTML file
 ```
+This website was created in webflow and was exported to gain full control on specific things like functionality, designs.
+By default, it was in vanilla HTML,CSS & JS.
 
 ## Getting Started
 
