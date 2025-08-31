@@ -13,8 +13,8 @@ const projects = {
                 "Customer segmentation analysis",
                 "Automated report generation"
             ],
-            tools: ["python.svg", "tableau.svg", "sql.svg"],
-            image: "https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png"
+            tools: ["Photoshop"],
+            image: "assets/images/projects/BTSposter.png"
         },
         {
             id: 2,
@@ -27,8 +27,8 @@ const projects = {
                 "Trend forecasting",
                 "Data visualization"
             ],
-            tools: ["r.svg", "powerbi.svg", "excel.svg"],
-            image: "https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png"
+            tools: ["Photoshop", "Illustrator", "InDesign"],
+            image: "assets/images/projects/BTSposter.png"
         },
         {
             id: 3,
@@ -41,8 +41,8 @@ const projects = {
                 "Customer retention strategies",
                 "Performance optimization"
             ],
-            tools: ["python.svg", "tensorflow.svg", "pandas.svg"],
-            image: "https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png"
+            tools: ["Photoshop", "Illustrator", "InDesign"],
+            image: "assets/images/projects/BTSposter.png"
         },
         {
             id: 4,
@@ -55,38 +55,38 @@ const projects = {
                 "Customer retention strategies",
                 "Performance optimization"
             ],
-            tools: ["python.svg", "tensorflow.svg", "pandas.svg"],
-            image: "https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png"
+            tools: ["Photoshop", "Illustrator", "InDesign"],
+            image: "assets/images/projects/BTSposter.png"
         },
         
         // Graphics Projects
         {
             id: 4,
-            title: "Brand Identity Package",
-            description: "Complete visual identity for a modern tech startup.",
+            title: "MUSIC FEST 2024 FT. BINI",
+            description: "A digital poster advertisement showcasing P-POP idol group \"BINI\". The project focused on combining bold typography, dynamic imagery, and neon-inspired color schemes to capture the excitement and youthful energy of the group. ",
             types: ["Graphics", "Design"],
             status: "Finished",
             highlights: [
-                "Logo design",
-                "Brand guidelines",
-                "Marketing collateral"
+                "Bold typography, neon highlights",
+                "Tailored to various formats",
+                "Simplistic and Modern"
             ],
-            tools: ["illustrator.svg", "photoshop.svg", "indesign.svg"],
-            image: "https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png"
+            tools: ["Photoshop", "Illustrator"],
+            image: "assets/images/projects/BINIPoster.png"
         },
         {
             id: 5,
-            title: "UI/UX Mobile App Design",
-            description: "User interface design for a fitness tracking application.",
+            title: "BTS 2023 SHANGHAI WORLD TOUR",
+            description: "A digital poster advertisement showcasing BTS’ Jungkook over the masses showcasing his unwavering passion for music and his goal to captivate his fans through this medium. The design uses the principle of emphasis to put Jungkook in the light, making him the focal point of the message being conveyed.",
             types: ["Graphics", "Design"],
-            status: "In Progress",
+            status: "Finished",
             highlights: [
-                "User flow mapping",
-                "High-fidelity prototypes",
-                "Design system"
+                "Delivered on time",
+                "Optimized design for various media formats.",
+                "Simplistic"
             ],
-            tools: ["figma.svg", "sketch.svg", "adobexd.svg"],
-            image: "https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png"
+            tools: ["Photoshop", "Illustrator"],
+            image: "assets/images/projects/BTSposter.png"
         },
         {
             id: 6,
@@ -99,8 +99,8 @@ const projects = {
                 "Print-ready files",
                 "Material selection"
             ],
-            tools: ["dimension.svg", "illustrator.svg", "photoshop.svg"],
-            image: "https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png"
+            tools: ["Photoshop", "Illustrator", "InDesign"],
+            image: "assets/images/projects/BTSposter.png"
         },
         
         // Development Projects
@@ -115,8 +115,8 @@ const projects = {
                 "Secure checkout",
                 "Admin dashboard"
             ],
-            tools: ["react.svg", "nodejs.svg", "mongodb.svg"],
-            image: "https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png"
+            tools: ["Photoshop", "Illustrator", "InDesign"],
+            image: "assets/images/projects/BTSposter.png"
         },
         {
             id: 8,
@@ -129,8 +129,8 @@ const projects = {
                 "User authentication",
                 "File sharing"
             ],
-            tools: ["vue.svg", "firebase.svg", "tailwind.svg"],
-            image: "https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png"
+            tools: ["Photoshop", "Illustrator", "InDesign"],
+            image: "assets/images/projects/BTSposter.png"
         },
         {
             id: 9,
@@ -143,8 +143,8 @@ const projects = {
                 "Data visualization",
                 "Scalable architecture"
             ],
-            tools: ["python.svg", "django.svg", "postgresql.svg"],
-            image: "https://cdn.prod.website-files.com/6889b90a636f017605fbaf59/68983a31aeee42c56da38dcb_BiniConcert.png"
+            tools: ["Photoshop", "Illustrator", "InDesign"],
+            image: "assets/images/projects/BTSposter.png"
         }
     ]
 };
@@ -213,14 +213,18 @@ function updateOthersSection() {
             project.types.forEach(type => {
                 const typeDiv = document.createElement('div');
                 typeDiv.className = 'work-tag-div';
-                typeDiv.innerHTML = `<a href="#" class="project-type project-type1-tag w-button">${type}</a>`;
+                typeDiv.innerHTML = `<a href="#" class="project-type project-type1-tag w-button">${type === 'Development' ? 'Dev' : type}</a>`;
                 typeContainer.appendChild(typeDiv);
             });
         }
         
         // Update project image
         const imageElement = item.querySelector('.image-4');
-        if (imageElement) imageElement.src = project.image;
+        if (imageElement) {
+            imageElement.src = project.image;
+            imageElement.srcset = ''; // Clear srcset to avoid using the hardcoded one
+            imageElement.alt = project.title; // Set alt text for accessibility
+        }
         
         // Update project description
         const descContainer = item.querySelector('.other-project-desc-container');
@@ -277,6 +281,7 @@ function updateFeaturedProject(project, skipAnimation = false) {
     const mainContent = document.querySelector('.content-main');
     const projectInfo = document.querySelector('.project-info');
     const highlightsContainer = document.querySelector('.work-highlights-list-container');
+    const toolsContainer = document.querySelector('#container_tools-used');
     
     // Get all elements that need transitions
     const titleElement = document.getElementById('heading_projects-title');
@@ -290,7 +295,9 @@ function updateFeaturedProject(project, skipAnimation = false) {
         // Update main image
         const mainImage = document.querySelector('.content-main img');
         if (mainImage) {
+            // Update the src and srcset to use the project's image
             mainImage.src = project.image;
+            mainImage.srcset = ''; // Clear srcset to avoid using the hardcoded one
             mainImage.alt = project.title;
         }
 
@@ -300,12 +307,33 @@ function updateFeaturedProject(project, skipAnimation = false) {
         // Update description
         if (descElement) descElement.textContent = project.description;
 
+        // Update tools
+        if (toolsContainer && project.tools) {
+            // Clear existing tools but keep the container's structure and classes
+            toolsContainer.innerHTML = '';
+            
+            // Add the tool images
+            project.tools.forEach(tool => {
+                // Handle different file extensions
+                const toolName = tool.replace(/\.\w+$/, ''); // Remove extension
+                const toolExt = tool.includes('.') ? tool.split('.').pop() : 'png';
+                const toolPath = `assets/images/tools/${toolName}.${toolExt}`;
+                
+                const toolDiv = document.createElement('div');
+                toolDiv.className = 'tool-img-div';
+                toolDiv.innerHTML = `
+                    <img src="${toolPath}" loading="lazy" alt="${toolName}" class="tool-item-img">
+                `;
+                toolsContainer.appendChild(toolDiv);
+            });
+        }
+
         // Update project types
         if (typeContainer && project.types) {
             typeContainer.innerHTML = project.types.map(type => `
                 <div class="work-tag-div">
                     <a href="#" class="project-type project-type1-tag w-button" onclick="event.preventDefault();">
-                        ${type}
+                        ${type === 'Development' ? 'Dev' : type}
                     </a>
                 </div>
             `).join('');
@@ -537,13 +565,15 @@ function showNextProject() {
 
 // Function to navigate to previous project
 function showPreviousProject() {
-    // If no history, nothing to go back to
-    if (historyStack.length === 0) return;
+    // If no history, do nothing (can't go back from first project)
+    if (historyStack.length === 0) {
+        return; // Don't do anything if at the first project
+    }
     
     // Get previous project from history
-    const prevProject = historyStack.pop();
+    const prevProject = historyStack[historyStack.length - 1];
     
-    // Add current project back to the queue
+    // Add current project back to the queue if it exists
     if (currentProject) {
         // Only add to queue if it's not already there
         if (!projectQueue.some(p => p.id === currentProject.id)) {
@@ -551,14 +581,29 @@ function showPreviousProject() {
         }
     }
     
-    // Update current project and display it
+    // Remove the previous project from history
+    historyStack.pop();
+    
+    // Update current project
+    const oldProject = currentProject;
     currentProject = prevProject;
+    
+    // Only update the queue if we don't have enough projects
+    if (projectQueue.length < 3) {
+        const allProjects = getFilteredProjects(currentCategory);
+        const newProjects = allProjects.filter(p => 
+            p.id !== currentProject.id && 
+            !projectQueue.some(q => q.id === p.id) &&
+            !historyStack.some(h => h.id === p.id)
+        );
+        
+        // Add new projects to the queue
+        projectQueue = [...projectQueue, ...newProjects].slice(0, 3);
+    }
+    
     updateFeaturedProject(prevProject);
     updateOthersSection(); // Update others section after navigation
 }
-
-
-// Initialize the application
 function initializeApp() {
     // Set default category
     currentCategory = 'Data';
