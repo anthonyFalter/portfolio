@@ -434,23 +434,36 @@
                         </div>
                         <div class="contact-form-containers">
                             <div class="form-block w-form">
-                                <form id="email-form" name="email-form" data-name="Email Form" method="get" class="form"
-                                    data-wf-page-id="6889b90a636f017605fbaf5f"
-                                    data-wf-element-id="ddc44598-9334-9d1e-65d9-c6bfead4f613"
-                                    data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e">
-                                    <div class="name-field-container"><label for="field_name"
-                                            class="field-label">Name:&nbsp;*</label><input class="name-field w-input"
-                                            maxlength="256" name="name" data-name="Name" placeholder="Enter your name"
-                                            type="text" id="field_name"></div>
-                                    <div class="email-field-container"><label for="field_email"
-                                            class="field-label">Email:&nbsp;*</label><input class="email-field w-input"
-                                            maxlength="256" name="name" data-name="Name" placeholder="Enter your email"
-                                            type="text" id="field_email"></div>
-                                    <div class="message-field-container"><label for="field_message"
-                                            class="field-label">Message:&nbsp;*</label><textarea
-                                            placeholder="Enter your message" maxlength="5000" id="field_message"
-                                            name="field" data-name="Field" class="message-field w-input"></textarea>
+                                <form id="email-form" class="form" method="POST" action="https://formsubmit.co/rosselopre.business@gmail.com" enctype="multipart/form-data">
+                                    <!-- FormSubmit Configuration -->
+                                    <input type="hidden" name="_subject" value="New message from portfolio">
+                                    <input type="hidden" name="_next" value="thank-you.html">
+                                    <input type="hidden" name="_captcha" value="true">
+                                    <input type="text" name="_honey" style="display:none">
+                                    <input type="hidden" name="_template" value="table">
+                                    <input type="hidden" name="_autoresponse" value="Thank you for your message! I'll get back to you soon.">
+                                    
+                                    <div class="name-field-container">
+                                        <label for="field_name" class="field-label">Name:&nbsp;*</label>
+                                        <input class="name-field w-input" maxlength="256" name="name" 
+                                               data-name="Name" placeholder="Enter your name"
+                                               type="text" id="field_name" required>
                                     </div>
+                                    
+                                    <div class="email-field-container">
+                                        <label for="field_email" class="field-label">Email:&nbsp;*</label>
+                                        <input class="email-field w-input" maxlength="256" 
+                                               name="email" data-name="Email" placeholder="Enter your email"
+                                               type="email" id="field_email" required>
+                                    </div>
+                                    
+                                    <div class="message-field-container">
+                                        <label for="field_message" class="field-label">Message:&nbsp;*</label>
+                                        <textarea placeholder="Enter your message" maxlength="5000" 
+                                                  id="field_message" name="message" data-name="Message" 
+                                                  class="message-field w-input" required></textarea>
+                                    </div>
+                                    
                                 </form>
                                 <div class="w-form-done">
                                     <div>Thank you! Your submission has been received!</div>
@@ -490,8 +503,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="w-layout-blockcontainer form-submit-btn-container w-container"><a
-                                    id="btn_submit-form" href="#" class="form-submit-btn w-button">Submit</a></div>
+                            <div class="w-layout-blockcontainer w-container">
+                                    <button type="submit" id="btn_submit-form" class="form-submit-btn w-button" form="email-form">Submit</button>
+                                </div>
                         </div>
                     </div>
                 </div>
