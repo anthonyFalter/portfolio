@@ -28,7 +28,6 @@ By default, it was in vanilla HTML,CSS & JS.
 3. Update the HTML file to reference the new file locations.
 
 ## Notes
-- The project structure follows web development best practices.
 - All JavaScript files are now organized in the `assets/js/` directory.
 - CSS is stored in `assets/css/`.
 - Images are categorized in the `assets/images/` directory.
