@@ -37,7 +37,7 @@ const projects = {
             id: 4,
             title: "MUSIC FEST 2024 FT. BINI",
             description: "A digital poster advertisement showcasing P-POP idol group \"BINI\". The project focused on combining bold typography, dynamic imagery, and neon-inspired color schemes to capture the excitement and youthful energy of the group. ",
-            types: ["Graphics", "Design"],
+            types: ["Graphics", "Poster"],
             status: "Finished",
             highlights: [
                 "Bold typography, neon highlights",
@@ -49,9 +49,24 @@ const projects = {
         },
         {
             id: 5,
+            title: "Brand Identity Design",
+            description: "Modern, sleek and minimalistic company logo tailored to the client's request. Used shades of blue to branch from the common themes of pest control services color such as Red, or Green",
+            types: ["Graphics", "Poster"],
+            status: "Finished",
+            highlights: [
+                "3D mockups",
+                "Print-ready files",
+                "Minimalist"
+            ],
+            tools: ["Photoshop"],
+            image: "assets/images/projects/BTSposter.png"
+        },
+        
+        {
+            id: 6,
             title: "BTS 2023 SHANGHAI WORLD TOUR",
             description: "A digital poster advertisement showcasing BTS’ Jungkook over the masses showcasing his unwavering passion for music and his goal to captivate his fans through this medium. The design uses the principle of emphasis to put Jungkook in the light, making him the focal point of the message being conveyed.",
-            types: ["Graphics", "Design"],
+            types: ["Graphics", "Logos"],
             status: "Finished",
             highlights: [
                 "Delivered on time",
@@ -61,63 +76,35 @@ const projects = {
             tools: ["Photoshop", "Illustrator"],
             image: "assets/images/projects/BTSposter.png"
         },
-        {
-            id: 6,
-            title: "Product Packaging Design",
-            description: "Eco-friendly packaging design for a sustainable brand.",
-            types: ["Graphics", "Design"],
-            status: "Finished",
-            highlights: [
-                "3D mockups",
-                "Print-ready files",
-                "Material selection"
-            ],
-            tools: ["Photoshop", "Illustrator", "InDesign"],
-            image: "assets/images/projects/BTSposter.png"
-        },
         
         // Development Projects
         {
             id: 7,
-            title: "E-commerce Platform",
-            description: "Full-featured online store with payment integration.",
-            types: ["Development", "Web"],
+            title: "MLibras: RFID Management System",
+            description: "A library management application specifically tailored for MHPNHS Library. Enables advanced RFID usage in order to streamline manual data entry tasks involving  library works.",
+            types: ["Development", "App"],
             status: "Finished",
-            highlights: [
-                "Responsive design",
-                "Secure checkout",
-                "Admin dashboard"
-            ],
-            tools: ["Photoshop", "Illustrator", "InDesign"],
-            image: "assets/images/projects/BTSposter.png"
-        },
-        {
-            id: 8,
-            title: "Task Management App",
-            description: "Collaborative project management tool for remote teams.",
-            types: ["Development", "Web"],
-            status: "In Progress",
             highlights: [
                 "Real-time updates",
                 "User authentication",
-                "File sharing"
+                "RFID"
             ],
             tools: ["Photoshop", "Illustrator", "InDesign"],
-            image: "assets/images/projects/BTSposter.png"
+            image: "assets/images/projects/mLibrasSampleProject.png"
         },
         {
-            id: 9,
-            title: "Fitness Tracker API",
-            description: "RESTful API for fitness application with analytics.",
+            id: 8,
+            title: "Clastlify: Student Management System",
+            description: "A modern prototype of a proposed student management system. It features student handling capabilities, attendance tracking, grade management, and chat service. All in one web application.",
             types: ["Development", "Web"],
             status: "Finished",
             highlights: [
-                "JWT authentication",
+                "Figma Mockup",
                 "Data visualization",
                 "Scalable architecture"
             ],
             tools: ["Photoshop", "Illustrator", "InDesign"],
-            image: "assets/images/projects/BTSposter.png"
+            image: "assets/images/projects/clastlifySampleProject2.png"
         }
     ]
 };
