@@ -81,7 +81,7 @@ function initCardStack() {
         {
             title: 'In 2024...',
             type: 'video',
-            videoUrl: 'assets/images/cardstory/timelapseBrandingMMJC.mp4',
+            videoUrl: 'assets/images/cardstory/2024campsample.mp4',
             description: 'Attended tech camps to further deepen my knowledge on the tech industry.'
         },
         {
