@@ -30,34 +30,7 @@ const projects = {
             tools: ["Photoshop", "Illustrator", "InDesign"],
             image: "assets/images/projects/BTSposter.png"
         },
-        {
-            id: 3,
-            title: "Customer Churn Predictor",
-            description: "Machine learning model to predict customer churn rates.",
-            types: ["Data", "Analytics"],
-            status: "Finished",
-            highlights: [
-                "Predictive analytics",
-                "Customer retention strategies",
-                "Performance optimization"
-            ],
-            tools: ["Photoshop", "Illustrator", "InDesign"],
-            image: "assets/images/projects/BTSposter.png"
-        },
-        {
-            id: 4,
-            title: "Test DATA",
-            description: "Machine learning model to predict customer churn rates.",
-            types: ["Data", "Analytics"],
-            status: "Finished",
-            highlights: [
-                "Predictive analytics",
-                "Customer retention strategies",
-                "Performance optimization"
-            ],
-            tools: ["Photoshop", "Illustrator", "InDesign"],
-            image: "assets/images/projects/BTSposter.png"
-        },
+        
         
         // Graphics Projects
         {

@@ -67,27 +67,27 @@ function initCardStack() {
     // Card data with support for both images and videos
     const cardsData = [
         {
-            title: '2014',
+            title: 'In 2014...',
             type: 'video',
-            videoId: 'OG_bHxILu6Y',
+            videoUrl: 'assets/images/cardstory/firstGameSample.mp4',
             description: 'The year I learned to program a game at the age of 9 because I was curious of how games work.'
         },
         {
-            title: '2020',    
-            type: 'image',
-            imageUrl: 'assets/images/cardstory/MMJCCARD.jpg', // Example image path
-            description: 'I started offering my graphics design skills as a service to international clients.'
+            title: 'In 2020...',    
+            type: 'video',
+            videoUrl: 'assets/images/cardstory/timelapseBrandingMMJC.mp4',
+            description: 'I started offering my graphics design skills as a service to clients.'
         },
         {
-            title: '2024',
+            title: 'In 2024...',
             type: 'image',
-            imageUrl: 'assets/images/cardstory/MMJCCARD.png', // Example image path
+            imageUrl: 'assets/images/cardstory/MMJCCARD.png',
             description: 'Attended tech camps to further deepen my knowledge on the tech industry.'
         },
         {
-            title: '2025',
+            title: 'Present',
             type: 'image',
-            imageUrl: 'assets/images/cardstory/MMJCCARD.png', // Example image path
+            imageUrl: 'assets/images/cardstory/MMJCCARD.png',
             description: 'Currently exploring things that will help me develop my skills in the tech industry.'
         }
     ];
@@ -119,16 +119,19 @@ function initCardStack() {
         // Create card content based on type (video or image)
         let mediaContent = '';
         if (card.type === 'video') {
-            const videoUrl = `https://www.youtube-nocookie.com/embed/${card.videoId}?autoplay=1&mute=1&loop=1&playlist=${card.videoId}&controls=0&disablekb=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&fs=0&color=white&playsinline=1&enablejsapi=1`;
             mediaContent = `
                 <div class="card-video">
-                    <iframe 
-                        src="${videoUrl}"
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        onload="setTimeout(() => this.classList.add('loaded'), 100)">
-                    </iframe>
+                    <div class="video-background">
+                        <video autoplay muted loop playsinline>
+                            <source src="${card.videoUrl}" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="video-foreground">
+                        <video autoplay muted loop playsinline>
+                            <source src="${card.videoUrl}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
                 </div>`;
         } else if (card.type === 'image' && card.imageUrl) {
             mediaContent = `
@@ -170,24 +173,6 @@ function initCardStack() {
     
     // Initialize card stack positions
     initializeCardStack();
-    
-    // Auto-shuffle cards every 3 seconds
-    let autoShuffleInterval = setInterval(() => {
-        moveCardToFront();
-    }, 3000);
-    
-    // Pause auto-shuffle on hover
-    cardStack.addEventListener('mouseenter', () => {
-        clearInterval(autoShuffleInterval);
-    });
-    
-    // Resume auto-shuffle when mouse leaves
-    cardStack.addEventListener('mouseleave', () => {
-        clearInterval(autoShuffleInterval);
-        autoShuffleInterval = setInterval(() => {
-            moveCardToFront();
-        }, 3000);
-    });
 
     function moveCardToFront() {
         if (isAnimating) return;
@@ -296,13 +281,21 @@ function initCardStack() {
     
     // Auto-rotate cards
     function startAutoRotate() {
-        autoRotateInterval = setInterval(() => {
+        // Clear any existing interval to prevent duplicates
+        if (window.cardStackRotationInterval) {
+            clearInterval(window.cardStackRotationInterval);
+        }
+        if (autoRotateInterval) {
+            clearInterval(autoRotateInterval);
+        }
+        
+        // Use a single global interval for card rotation
+        window.cardStackRotationInterval = setInterval(() => {
             if (!isAnimating) {
-                // Always move the next card (index 1) to the front
-                // This will automatically cycle through all cards as we reorder them
+                // Move the next card to the front
                 moveCardToFront(1);
             }
-        }, 6000);
+        }, 6000); // 6 seconds
     }
     
     // Start auto-rotation
@@ -310,12 +303,22 @@ function initCardStack() {
     
     // Pause auto-rotation on hover
     cardStack.addEventListener('mouseenter', () => {
-        clearInterval(autoRotateInterval);
+        if (window.cardStackRotationInterval) {
+            clearInterval(window.cardStackRotationInterval);
+        }
+        if (autoRotateInterval) {
+            clearInterval(autoRotateInterval);
+        }
     });
     
     // Resume auto-rotation when mouse leaves
     cardStack.addEventListener('mouseleave', () => {
-        clearInterval(autoRotateInterval);
+        if (window.cardStackRotationInterval) {
+            clearInterval(window.cardStackRotationInterval);
+        }
+        if (autoRotateInterval) {
+            clearInterval(autoRotateInterval);
+        }
         startAutoRotate();
     });
 }
