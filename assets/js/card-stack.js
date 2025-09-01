@@ -64,52 +64,87 @@ function initCardStack() {
     let isAnimating = false;
     let autoRotateInterval;
 
-    // Card data
+    // Card data with support for both images and videos
     const cardsData = [
         {
-            title: 'Graphic Design',
-            image: 'assets/images/content/card1.jpg',
-            description: 'Creative visual solutions that capture attention and communicate effectively.'
+            title: '2014',
+            type: 'video',
+            videoId: 'OG_bHxILu6Y',
+            description: 'The year I learned to program a game at the age of 9 because I was curious of how games work.'
         },
         {
-            title: 'Web Development',
-            image: 'assets/images/content/card2.jpg',
-            description: 'Building modern, responsive websites with clean and efficient code.'
+            title: '2020',    
+            type: 'image',
+            imageUrl: 'assets/images/cardstory/MMJCCARD.jpg', // Example image path
+            description: 'I started offering my graphics design skills as a service to international clients.'
         },
         {
-            title: 'UI/UX Design',
-            image: 'assets/images/content/card1.jpg',
-            description: 'Creating intuitive and engaging user experiences through thoughtful design.'
+            title: '2024',
+            type: 'image',
+            imageUrl: 'assets/images/cardstory/MMJCCARD.png', // Example image path
+            description: 'Attended tech camps to further deepen my knowledge on the tech industry.'
         },
         {
-            title: 'Brand Identity',
-            image: 'assets/images/content/card2.jpg',
-            description: 'Developing unique brand identities that stand out and make an impact.'
-        },
-        {
-            title: 'Digital Illustration',
-            image: 'assets/images/content/card1.jpg',
-            description: 'Bringing ideas to life through creative and expressive illustrations.'
+            title: '2025',
+            type: 'image',
+            imageUrl: 'assets/images/cardstory/MMJCCARD.png', // Example image path
+            description: 'Currently exploring things that will help me develop my skills in the tech industry.'
         }
     ];
+
+    // Initialize card stack with proper z-index and transforms
+    function initializeCardStack() {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            card.style.transition = 'transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease-out';
+            if (index === 0) {
+                // Front card
+                card.style.zIndex = cards.length + 1;
+                card.style.transform = 'translateZ(0) rotateY(0deg) translateX(0)';
+                card.style.opacity = 1;
+            } else {
+                // Other cards in the stack
+                card.style.zIndex = cards.length - index;
+                card.style.transform = `translateZ(${-30 * index}px) rotateY(${5 * index}deg) translateX(${15 * index}px)`;
+                card.style.opacity = Math.max(0.6, 1 - 0.1 * index);
+            }
+        });
+    }
 
     // Create cards
     cardsData.forEach((card, index) => {
         const cardEl = document.createElement('div');
         cardEl.className = 'card';
         
+        // Create card content based on type (video or image)
+        let mediaContent = '';
+        if (card.type === 'video') {
+            const videoUrl = `https://www.youtube-nocookie.com/embed/${card.videoId}?autoplay=1&mute=1&loop=1&playlist=${card.videoId}&controls=0&disablekb=1&modestbranding=1&rel=0&showinfo=0&iv_load_policy=3&fs=0&color=white&playsinline=1&enablejsapi=1`;
+            mediaContent = `
+                <div class="card-video">
+                    <iframe 
+                        src="${videoUrl}"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        onload="setTimeout(() => this.classList.add('loaded'), 100)">
+                    </iframe>
+                </div>`;
+        } else if (card.type === 'image' && card.imageUrl) {
+            mediaContent = `
+                <div class="card-video">
+                    <img src="${card.imageUrl}" alt="${card.title}" class="card-image" loading="lazy">
+                </div>`;
+        }
+        
         cardEl.innerHTML = `
             <div class="card-content">
                 <div class="card-header">
                     <h2>${card.title}</h2>
                 </div>
-                <div class="card-image">
-                    <img src="${card.image}" alt="${card.title}">
-                </div>
+                ${mediaContent}
             </div>
         `;
-        
-        // Click functionality removed as per user request
         
         // Add description as data attribute
         cardEl.setAttribute('data-description', card.description);
@@ -132,51 +167,80 @@ function initCardStack() {
         
         cardStack.appendChild(cardEl);
     });
+    
+    // Initialize card stack positions
+    initializeCardStack();
+    
+    // Auto-shuffle cards every 3 seconds
+    let autoShuffleInterval = setInterval(() => {
+        moveCardToFront();
+    }, 3000);
+    
+    // Pause auto-shuffle on hover
+    cardStack.addEventListener('mouseenter', () => {
+        clearInterval(autoShuffleInterval);
+    });
+    
+    // Resume auto-shuffle when mouse leaves
+    cardStack.addEventListener('mouseleave', () => {
+        clearInterval(autoShuffleInterval);
+        autoShuffleInterval = setInterval(() => {
+            moveCardToFront();
+        }, 3000);
+    });
 
-    function moveCardToFront(clickedIndex) {
+    function moveCardToFront() {
         if (isAnimating) return;
         isAnimating = true;
-    
-        const cards = document.querySelectorAll('.card');
-    
-        // Step 1: Animate positions
-        updateCardVisuals(clickedIndex);
-    
-        // Step 2: After animation, rotate order
-        setTimeout(() => {
-            // Rotate the array (first -> last)
-            const first = cardsData.shift();
-            cardsData.push(first);
-    
-            // Re-render order
-            reorderCards(cardsData);
-    
+        
+        // Get all cards
+        const cards = Array.from(document.querySelectorAll('.card'));
+        if (cards.length === 0) {
             isAnimating = false;
-        }, 700); // matches transition
+            return;
+        }
+        
+        // Move the first card to the end of the array
+        const firstCard = cards.shift();
+        cards.push(firstCard);
+        
+        // Update z-index and transform for smooth animation
+        cards.forEach((card, index) => {
+            card.style.zIndex = cards.length - index;
+            if (index === 0) {
+                // New front card
+                card.style.transform = 'translateZ(0) rotateY(0deg) translateX(0)';
+                card.style.opacity = 1;
+            } else {
+                // Other cards
+                card.style.transform = `translateZ(${-30 * index}px) rotateY(${5 * index}deg) translateX(${15 * index}px)`;
+                card.style.opacity = Math.max(0.6, 1 - 0.1 * index);
+            }
+        });
+        
+        // Reorder the DOM after animation completes
+        setTimeout(() => {
+            cards.forEach(card => cardStack.appendChild(card));
+            isAnimating = false;
+        }, 700); // Match this with CSS transition duration
     }
     
-    function updateCardVisuals(clickedIndex) {
+    function updateCardVisuals() {
         const cards = document.querySelectorAll('.card');
     
         cards.forEach((card, index) => {
             card.style.transition = 'transform 0.7s cubic-bezier(0.34,1.56,0.64,1), opacity 0.5s ease-out';
-    
-            if (index === clickedIndex) {
-                // Card at index 1 should slide forward
+            
+            if (index === 0) {
+                // Front card
                 card.style.zIndex = cards.length + 1;
                 card.style.transform = 'translateZ(0) rotateY(0deg) translateX(0)';
                 card.style.opacity = 1;
-            } else if (index === 0) {
-                // First card (front) will move to back
-                card.style.zIndex = 1;
-                card.style.transform = `translateZ(-${30 * (cards.length - 1)}px) rotateY(${5 * (cards.length - 1)}deg) translateX(${15 * (cards.length - 1)}px)`;
-                card.style.opacity = 0.6;
             } else {
-                // Everything else shifts one step forward
-                const pos = index - 1;
+                // Other cards in the stack
                 card.style.zIndex = cards.length - index;
-                card.style.transform = `translateZ(${-30 * pos}px) rotateY(${5 * pos}deg) translateX(${15 * pos}px)`;
-                card.style.opacity = Math.max(0.6, 1 - 0.1 * pos);
+                card.style.transform = `translateZ(${-30 * index}px) rotateY(${5 * index}deg) translateX(${15 * index}px)`;
+                card.style.opacity = Math.max(0.6, 1 - 0.1 * index);
             }
         });
     }
@@ -238,7 +302,7 @@ function initCardStack() {
                 // This will automatically cycle through all cards as we reorder them
                 moveCardToFront(1);
             }
-        }, 3000);
+        }, 6000);
     }
     
     // Start auto-rotation
