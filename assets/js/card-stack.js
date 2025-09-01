@@ -1,5 +1,62 @@
+// Global variables
+let tooltip;
+let mouseX = 0;
+let mouseY = 0;
+
+function updateTooltipPosition() {
+    if (tooltip) {
+        tooltip.style.left = `${mouseX}px`;
+        
+        // Calculate tooltip height and adjust position
+        const tooltipHeight = tooltip.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const tooltipTop = mouseY - tooltipHeight - 10; // 10px offset from cursor
+        
+        // If tooltip would go above viewport, show below cursor
+        if (tooltipTop < 0) {
+            tooltip.style.top = `${mouseY + 20}px`; // 20px below cursor
+            tooltip.style.transform = 'translateX(-50%)';
+        } else {
+            tooltip.style.top = `${tooltipTop}px`;
+            tooltip.style.transform = 'translateX(-50%)';
+        }
+    }
+}
+
+// Track mouse position with delay
+let targetX = 0;
+let targetY = 0;
+let currentX = 0;
+let currentY = 0;
+const followSpeed = 0.1; // Lower value = more delay
+
+function updateCursorPosition() {
+    // Smoothly interpolate towards the target position
+    currentX += (targetX - currentX) * followSpeed;
+    currentY += (targetY - currentY) * followSpeed;
+    
+    // Update the tooltip position
+    mouseX = currentX;
+    mouseY = currentY;
+    updateTooltipPosition();
+    
+    // Continue the animation
+    requestAnimationFrame(updateCursorPosition);
+}
+
+// Start the animation loop
+updateCursorPosition();
+
+// Update target position on mouse move
+document.addEventListener('mousemove', (e) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+});
+
 // Initialize the card stack
 function initCardStack() {
+    // Tooltip is now created in initializeCardStack
+    
     const cardStack = document.getElementById('cardStack');
     if (!cardStack) return;
     
@@ -52,10 +109,25 @@ function initCardStack() {
             </div>
         `;
         
-        cardEl.addEventListener('click', () => {
-            if (!isAnimating) {
-                moveCardToFront(index);
-            }
+        // Click functionality removed as per user request
+        
+        // Add description as data attribute
+        cardEl.setAttribute('data-description', card.description);
+        
+        // Add hover events
+        cardEl.addEventListener('mouseenter', (e) => {
+            tooltip.textContent = card.description;
+            tooltip.classList.add('visible');
+        });
+        
+        cardEl.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            updateTooltipPosition();
+        });
+        
+        cardEl.addEventListener('mouseleave', () => {
+            tooltip.classList.remove('visible');
         });
         
         cardStack.appendChild(cardEl);
@@ -184,5 +256,46 @@ function initCardStack() {
     });
 }
 
-// Initialize the card stack when the page loads
-document.addEventListener('DOMContentLoaded', initCardStack);
+// Initialize when the DOM is fully loaded
+function initializeCardStack() {
+    // Create tooltip element
+    tooltip = document.createElement('div');
+    tooltip.className = 'card-tooltip';
+    document.body.appendChild(tooltip);
+    
+    // Initialize the card stack
+    initCardStack();
+}
+
+// Initialize based on document state
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeCardStack);
+} else {
+    setTimeout(initializeCardStack, 0);
+}
+
+// Reinitialize when the about section comes into view
+const aboutSection = document.querySelector('.aboutme-section');
+if (aboutSection) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Ensure cards are properly initialized and visible
+                const cards = document.querySelectorAll('.card');
+                if (cards.length > 0) {
+                    cards.forEach(card => {
+                        card.style.transition = 'none';
+                        card.style.opacity = '1';
+                        // Force reflow
+                        void card.offsetHeight;
+                        card.style.transition = 'transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease-out';
+                    });
+                }
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger when at least 10% of the section is visible
+    });
+
+    observer.observe(aboutSection);
+}

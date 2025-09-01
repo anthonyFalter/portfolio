@@ -1,3 +1,39 @@
+/* Card Tooltip */
+.card-tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.01);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 280px;
+    min-width: 120px;
+    width: max-content;
+    box-sizing: border-box;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s, 
+                transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) 0.1s, 
+                background-color 0.3s ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid #333;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-tooltip.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-100%);
+}
+
 /* Card Stack Component */
 .card-stack {
     position: relative;
