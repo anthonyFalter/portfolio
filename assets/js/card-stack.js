@@ -80,14 +80,14 @@ function initCardStack() {
         },
         {
             title: 'In 2024...',
-            type: 'image',
-            imageUrl: 'assets/images/cardstory/MMJCCARD.png',
+            type: 'video',
+            videoUrl: 'assets/images/cardstory/timelapseBrandingMMJC.mp4',
             description: 'Attended tech camps to further deepen my knowledge on the tech industry.'
         },
         {
             title: 'Present',
-            type: 'image',
-            imageUrl: 'assets/images/cardstory/MMJCCARD.png',
+            type: 'video',
+            videoUrl: 'assets/images/cardstory/2025sample.mp4',
             description: 'Currently exploring things that will help me develop my skills in the tech industry.'
         }
     ];
