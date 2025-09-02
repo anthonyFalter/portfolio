@@ -4796,7 +4796,7 @@ textarea.w-input, textarea.w-select {
 .heading-cta-links-text {
   color: #fff;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   height: 100%;
   margin-top: 0;
   margin-bottom: 0;
@@ -4805,6 +4805,23 @@ textarea.w-input, textarea.w-select {
   font-size: 12px;
   font-weight: 200;
   display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.heading-cta-links-text a {
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.heading-cta-links-text a:hover {
+  opacity: 0.8;
+}
+
+.heading-cta-links-text .dot {
+  margin: 0 4px;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .image-5 {

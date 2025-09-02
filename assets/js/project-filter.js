@@ -49,6 +49,20 @@ const projects = {
         },
         {
             id: 5,
+            title: "BTS 2023 SHANGHAI WORLD TOUR",
+            description: "A digital poster advertisement showcasing BTS’ Jungkook over the masses showcasing his unwavering passion for music and his goal to captivate his fans through this medium. The design uses the principle of emphasis to put Jungkook in the light, making him the focal point of the message being conveyed.",
+            types: ["Graphics", "Logos"],
+            status: "Finished",
+            highlights: [
+                "Delivered on time",
+                "Optimized design for various media formats.",
+                "Simplistic"
+            ],
+            tools: ["Photoshop", "Illustrator"],
+            image: "assets/images/projects/BTSposter.png"
+        },
+        {
+            id: 6,
             title: "Brand Identity Design",
             description: "Modern, sleek and minimalistic company logo tailored to the client's request. Used shades of blue to branch from the common themes of pest control services color such as Red, or Green",
             types: ["Graphics", "Poster"],
@@ -62,20 +76,7 @@ const projects = {
             image: "assets/images/projects/BTSposter.png"
         },
         
-        {
-            id: 6,
-            title: "BTS 2023 SHANGHAI WORLD TOUR",
-            description: "A digital poster advertisement showcasing BTS’ Jungkook over the masses showcasing his unwavering passion for music and his goal to captivate his fans through this medium. The design uses the principle of emphasis to put Jungkook in the light, making him the focal point of the message being conveyed.",
-            types: ["Graphics", "Logos"],
-            status: "Finished",
-            highlights: [
-                "Delivered on time",
-                "Optimized design for various media formats.",
-                "Simplistic"
-            ],
-            tools: ["Photoshop", "Illustrator"],
-            image: "assets/images/projects/BTSposter.png"
-        },
+        
         
         // Development Projects
         {
