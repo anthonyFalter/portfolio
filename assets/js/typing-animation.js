@@ -168,7 +168,60 @@ function initTypingAnimation() {
     }, { passive: true });
 }
 
+// Roles for typing animation
+const roles = ['Data Entry', 'Graphics Designer', 'Web Developer'];
+
 // Start the animation when the page is fully loaded
-window.addEventListener('load', function() {
+document.addEventListener('DOMContentLoaded', function() {
     initTypingAnimation();
+    
+    // Typing effect for the role text
+    const typingText = document.getElementById('typing-text');
+    const cursor = document.getElementById('cursor');
+    
+    if (typingText && cursor) {
+        let currentRoleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 100; // typing speed in ms
+        let deleteSpeed = 50; // deleting speed in ms
+        let pauseTime = 2000; // pause between words in ms
+        
+        function type() {
+            const currentRole = roles[currentRoleIndex];
+            
+            if (isDeleting) {
+                // Delete character
+                typingText.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+                typeSpeed = deleteSpeed;
+            } else {
+                // Type character
+                typingText.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+                typeSpeed = 100;
+            }
+
+            // Check if we've finished deleting
+            if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+                typeSpeed = 500; // pause before typing next word
+            }
+            // Check if we've finished typing
+            else if (!isDeleting && charIndex === currentRole.length) {
+                typeSpeed = pauseTime; // pause at end of word
+                isDeleting = true;
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Start the typing effect after a short delay
+        cursor.style.animation = 'none';
+        setTimeout(() => {
+            cursor.style.animation = '';
+            type();
+        }, 1000);
+    }
 });
