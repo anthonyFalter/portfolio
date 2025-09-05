@@ -4015,7 +4015,7 @@ textarea.w-input, textarea.w-select {
 
 .list {
   padding: 0 0 0 1.5em;
-  margin: 0 0 1em 0; /* Reduced top margin */
+  margin: 0 0 1em 0; /* Scrolling Text Animation */
   list-style-type: disc;
   list-style-position: outside;
 }
@@ -5720,4 +5720,97 @@ textarea.w-input, textarea.w-select {
   opacity: 0;
   height: 0;
   overflow: hidden;
+}
+
+/* Scrolling Text Animation */
+.div-block-6 {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 1.5rem 0;
+    background: transparent;
+}
+
+.scrolling-text-wrapper {
+    display: flex;
+    width: 100%;
+}
+
+.scrolling-text {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    min-width: 100%;
+    animation: scroll 40s linear infinite;
+    will-change: transform;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Background Container */
+#background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.background-section-container {
+    width: 100%;
+    height: 100%;
+}
+
+/* Hero Section */
+.hero-section > .w-container > div:first-child {
+    text-align: center;
+    width: 100%;
+}
+
+.hero-dev-desc {
+    text-align: center;
+}
+
+/* Project Description */
+.project-desc-container {
+    position: relative;
+    padding-bottom: 50px;
+}
+
+.demo-button-container {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+#demo-button {
+    margin: 0;
+    width: 100px;
+    height: 30px;
+    font-size: 0.85em;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* Honey Pot Field */
+input[name="_honey"] {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .scrolling-text {
+        animation-duration: 30s;
+    }
 }
