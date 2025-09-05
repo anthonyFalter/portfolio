@@ -14,7 +14,9 @@ const projects = {
                 "Automated report generation"
             ],
             tools: ["Photoshop"],
-            image: "assets/images/projects/BTSposter.png"
+            image: "assets/images/projects/BTSposter.png",
+            demo: true,
+            demoUrl: "https://example.com/demo/sales-dashboard"
         },
         {
             id: 2,
@@ -28,7 +30,9 @@ const projects = {
                 "Data visualization"
             ],
             tools: ["Photoshop", "Illustrator", "InDesign"],
-            image: "assets/images/projects/BTSposter.png"
+            image: "assets/images/projects/BTSposter.png",
+            demo: true,
+            demoUrl: "https://example.com/demo/sales-dashboard"
         },
         
         
@@ -45,7 +49,9 @@ const projects = {
                 "Simplistic and Modern"
             ],
             tools: ["Photoshop", "Illustrator"],
-            image: "assets/images/projects/BINIPoster.png"
+            image: "assets/images/projects/BINIPoster.png",
+            demo: false,
+            demoUrl: "https://www.instagram.com/p/C4pZQqQv4LZ/"
         },
         {
             id: 5,
@@ -59,7 +65,9 @@ const projects = {
                 "Simplistic"
             ],
             tools: ["Photoshop", "Illustrator"],
-            image: "assets/images/projects/BTSposter.png"
+            image: "assets/images/projects/BTSposter.png",
+            demo: false,
+            demoUrl: "https://www.instagram.com/p/C4pZQqQv4LZ/"
         },
         {
             id: 6,
@@ -73,7 +81,9 @@ const projects = {
                 "Minimalist"
             ],
             tools: ["Photoshop"],
-            image: "assets/images/projects/BTSposter.png"
+            image: "assets/images/projects/BTSposter.png",
+            demo: false,
+            demoUrl: "https://www.instagram.com/p/C4pZQqQv4LZ/"
         },
         
         
@@ -91,7 +101,9 @@ const projects = {
                 "RFID"
             ],
             tools: ["Photoshop", "Illustrator", "InDesign"],
-            image: "assets/images/projects/mLibrasSampleProject.png"
+            image: "assets/images/projects/mLibrasSampleProject.png",
+            demo: true,
+            demoUrl: "https://drive.google.com/file/d/1WxYxDLFQBvm3Tpf2zz3Pxyl162Y4iPGA/view?usp=sharing"
         },
         {
             id: 8,
@@ -105,7 +117,9 @@ const projects = {
                 "Scalable architecture"
             ],
             tools: ["Photoshop", "Illustrator", "InDesign"],
-            image: "assets/images/projects/clastlifySampleProject2.png"
+            image: "assets/images/projects/clastlifySampleProject2.png",
+            demo: true,
+            demoUrl: "https://www.figma.com/proto/e8YdszwztVhX6Mb0z1qIgP/Clastlify_Collaborative_Prototype?page-id=0%3A1&node-id=2761-1046&p=f&viewport=9746%2C2132%2C0.29&t=RaVY7RJePyd7gQyl-1&scaling=contain&content-scaling=fixed&starting-point-node-id=2761%3A1046"
         }
     ]
 };
@@ -302,6 +316,38 @@ function updateFeaturedProject(project, skipAnimation = false) {
 
         // Update status
         if (statusElement) statusElement.textContent = project.status;
+
+        // Update demo button
+        const demoButton = document.getElementById('demo-button');
+        const demoButtonContainer = document.querySelector('.demo-button-container');
+        if (demoButton && demoButtonContainer) {
+            if (project.demo && project.demoUrl) {
+                // Show the button and update its properties
+                demoButtonContainer.style.display = 'flex';
+                demoButton.href = project.demoUrl;
+                demoButton.target = '_blank';
+                demoButton.rel = 'noopener noreferrer';
+                demoButton.style.display = 'flex';
+                
+                // Update the button text and icon
+                const svg = demoButton.querySelector('svg');
+                if (!svg) {
+                    // Add the icon if it doesn't exist
+                    demoButton.innerHTML = `
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                        Demo
+                    `;
+                }
+            } else {
+                // Hide the button if demo is false or no demoUrl
+                demoButtonContainer.style.display = 'none';
+                demoButton.style.display = 'none';
+            }
+        }
 
         // Update highlights
         if (highlightsList) {
